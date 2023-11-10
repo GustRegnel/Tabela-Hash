@@ -51,7 +51,7 @@ public class TabelaHash {
     }
 
     private int funcaoHashMultiplicacao(int chave) {
-        double A = (Math.sqrt(5) - 1) / 2; // Fator de multiplicação típico
+        double A = (Math.sqrt(5) - 1) / 2; 
         return (int) (tamanho * ((chave * A) % 1));
     }
 
