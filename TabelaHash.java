@@ -17,8 +17,12 @@ public class TabelaHash {
         if (tabela[indice] == null) {
             tabela[indice] = registro;
         } else {
-            numeroColisoes++;
-
+            Registro node = tabela[indice];
+            while (node.getProximo() != null){
+                numeroColisoes++;
+                node = node.getProximo();
+            }
+            node.setProximo(new Registro(registro.getCodigo()));
         }
         numeroInsercoes++;
     }
@@ -26,11 +30,14 @@ public class TabelaHash {
     public Registro buscar(int codigo) {
         int indice = calcularIndice(codigo);
         Registro registro = tabela[indice];
-        if (registro != null && registro.getCodigo() == codigo) {
+        if (registro != null) {
             numeroComparacoes++;
-            return registro;
-        } else {
-            numeroComparacoes++;
+            if (registro.getCodigo() == codigo) {
+                return registro;
+            }
+            registro = registro.getProximo();
+
+
         }
         return null;
     }
@@ -51,7 +58,7 @@ public class TabelaHash {
     }
 
     private int funcaoHashMultiplicacao(int chave) {
-        double A = (Math.sqrt(5) - 1) / 2; 
+        double A = (Math.sqrt(5) - 1) / 2;
         return (int) (tamanho * ((chave * A) % 1));
     }
 
@@ -76,3 +83,4 @@ public class TabelaHash {
         return numeroComparacoes;
     }
 }
+
