@@ -30,7 +30,7 @@ public class Main {
                 System.out.println("Tempo de Busca: " + tempoBusca + " ms");
                 System.out.println("Número de Comparações Médio: " + (double) numeroComparacoes / conjuntoDeDados.size());
 
-                System.out.println();
+                 System.out.println();
             }
         }
     }
@@ -40,7 +40,7 @@ public class Main {
         Random random = new Random(1234);
 
         for (int i = 0; i < tamanho; i++) {
-            int codigo = random.nextInt(5000000);
+            int codigo = random.nextInt(500000);
             conjunto.add(new Registro(codigo));
         }
 
